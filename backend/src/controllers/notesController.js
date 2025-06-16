@@ -5,9 +5,22 @@ export const getAllNotes = async (req, res) => {
         const notes = await Note.find();
         res.status(200).json(notes);
     } catch (error) {
-        res.status(500).json({message: "Failed to get notes", error: error.message});
+        res.status(500).json({message: "Failed to get all notes", error: error.message});
     }
     res.send("You just fetched the note");
+}
+
+export const getNoteById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const note = await Note.findById(id);
+        if (!note) {
+            return res.status(404).json({message: "Note not found"});
+        }
+        res.status(200).json({ message: "Note found" , note: note});
+    } catch (error) {
+        res.status(500).json({message: "Failed to get the note", error: error.message});
+    }
 }
 
 export const createNote = async (req, res) => {
