@@ -9,6 +9,7 @@ const app = express();
 
 connectDB();
 
+app.use(express.json());// Middleware to parse JSON bodies
 app.use("/note", noteRoutes);
 
 
