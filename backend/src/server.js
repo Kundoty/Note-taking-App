@@ -8,7 +8,6 @@ dotenv.config();
 
 const app = express();
 
-connectDB();
 // Middleware to parse JSON bodies
 app.use(express.json());
 // Middleware to check the request rate and limit
@@ -23,5 +22,7 @@ app.use(rateLimiter);
 
 app.use("/note", noteRoutes);
 
-
-app.listen(8080, () => {});
+// Better practice of connecting database first then listen the server
+connectDB().then(() => {
+    app.listen(8080, () => {console.log("Server Started on port 8080")});
+});
