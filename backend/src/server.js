@@ -8,8 +8,16 @@ dotenv.config();
 const app = express();
 
 connectDB();
+// Middleware to parse JSON bodies
+app.use(express.json());
 
-app.use(express.json());// Middleware to parse JSON bodies
+
+// custome middleware
+// app.use((req, res, next) => {
+//     console.log(`Request Method: ${req.method}, request URL: ${req.url}`);
+//     next(); // call it so it can go to the next middleware or route handler otherwise it will stuck
+// });
+
 app.use("/note", noteRoutes);
 
 
