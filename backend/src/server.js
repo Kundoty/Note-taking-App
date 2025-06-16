@@ -1,6 +1,7 @@
 import express from "express";
 import noteRoutes from "./routes/noteRoutes.js";
 import { connectDB } from "./config/db.js";
+import rateLimiter from "./middleware/rateLimiter.js"
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -10,6 +11,8 @@ const app = express();
 connectDB();
 // Middleware to parse JSON bodies
 app.use(express.json());
+// Middleware to check the request rate and limit
+app.use(rateLimiter);
 
 
 // custome middleware
