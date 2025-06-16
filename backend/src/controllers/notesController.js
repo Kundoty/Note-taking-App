@@ -3,6 +3,7 @@ import Note from "../model/Note.js";
 export const getAllNotes = async (req, res) => {
     try {
         const notes = await Note.find();
+        // const notes = await Note.find().sort({createdAt: -1});  // this will show the latest note at first
         res.status(200).json(notes);
     } catch (error) {
         res.status(500).json({message: "Failed to get all notes", error: error.message});
