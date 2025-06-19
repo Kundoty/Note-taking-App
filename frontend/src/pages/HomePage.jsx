@@ -1,8 +1,9 @@
 import { useState, useEffect} from 'react'
-import Navbar from '../components/Navbar.jsx'
 import { toast } from 'react-hot-toast'
-import RatelimitUI from '../components/RatelimitUI.jsx'
 import axios from 'axios'
+
+import Navbar from '../components/Navbar.jsx'
+import RatelimitUI from '../components/RatelimitUI.jsx'
 
 const HomePage = () => {
     const [isRatelimited, setIsRatelimited] = useState(false);
