@@ -3,11 +3,14 @@ import noteRoutes from "./routes/noteRoutes.js";
 import { connectDB } from "./config/db.js";
 import rateLimiter from "./middleware/rateLimiter.js"
 import dotenv from "dotenv";
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 
+// Middleware to eable CORS need to be set before rate limit
+app.use(cors()); // Enable CORS for all routes  || cors(origins: '......')
 // Middleware to parse JSON bodies
 app.use(express.json());
 // Middleware to check the request rate and limit
