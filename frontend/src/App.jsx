@@ -7,7 +7,7 @@ import NoteDetailPage from './pages/NoteDetailPage'
 
 const App = () => {
   return (
-    <div>
+    <div className='bg-zinc-800 min-h-screen'>
       <BrowserRouter>
         <Toaster />
         <Routes>
