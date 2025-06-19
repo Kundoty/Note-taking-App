@@ -8,7 +8,7 @@ import Notecard from '../components/Notecard.jsx'
 
 const HomePage = () => {
     const [isRatelimited, setIsRatelimited] = useState(false);
-    const [notes, setNotes] = useState([]);
+    const [noteList, setNoteList] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const HomePage = () => {
                 //const res = await fetch('http:localhost:8080/note');
                 //const data = await res.json();
                 const res = await axios.get('http://localhost:8080/note');
-                setNotes(res.data);
+                setNoteList(res.data);
                 setIsRatelimited(false);
                 //console.log(res.data);
             } catch (error) {
@@ -44,11 +44,11 @@ const HomePage = () => {
             { isRatelimited && <RatelimitUI /> }
             <div className='max-w-7xl mx-auto p-4 mt-6'>
                 {loading && <div className='text-center text-primary py-10'>正在加载你的笔记 ...</div>}
-                {notes.length > 0 && !isRatelimited && (
+                {noteList.length > 0 && !isRatelimited && (
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                        {notes.map((note, id) => (
+                        {noteList.map((note, id) => (
                             <div>
-                                <Notecard note={note}/>
+                                <Notecard key={note._id} note={note} setNoteList={setNoteList}/>
                             </div>
                         ))}
                     </div>
