@@ -17,7 +17,7 @@ const HomePage = () => {
             try {
                 //const res = await fetch('http:localhost:8080/note');
                 //const data = await res.json();
-                const res = await axios.get('http://localhost:8080/note');
+                const res = await axios.get('/note');
                 setNoteList(res.data);
                 setIsRatelimited(false);
                 //console.log(res.data);

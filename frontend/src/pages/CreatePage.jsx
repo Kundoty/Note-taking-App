@@ -20,7 +20,7 @@ const CreatePage = () => {
 
         setLoading(true);
         try {
-            await axios.post('http://localhost:8080/note', {
+            await axios.post('/note', {
                 title,
                 description
             })

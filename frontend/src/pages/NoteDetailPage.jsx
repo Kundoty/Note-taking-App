@@ -17,7 +17,7 @@ const NoteDetailPage = () => {
     useEffect(() => {
         const fetchNote = async () => {
             try {
-                const res = await axios.get(`http://localhost:8080/note/${id}`);
+                const res = await axios.get(`/note/${id}`);
                 setNote(res.data);
             } catch (error) {
                 console.log("Failed to fetch note:", error);
@@ -41,7 +41,7 @@ const NoteDetailPage = () => {
         if (!window.confirm('确定要删除这条笔记吗？')) return;
 
         try {
-            await axios.delete(`http://localhost:8080/note/${id}`);
+            await axios.delete(`/note/${id}`);
             toast.success('笔记删除成功');
             naviagte('/');
         } catch (error) {
@@ -58,7 +58,7 @@ const NoteDetailPage = () => {
 
         setSaving(true);
         try {
-            await axios.put(`http://localhost:8080/note/${id}`, {
+            await axios.put(`/note/${id}`, {
                 title: note.title,
                 description: note.description
             });

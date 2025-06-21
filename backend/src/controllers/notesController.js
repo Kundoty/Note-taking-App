@@ -8,6 +8,7 @@ export const getAllNotes = async (req, res) => {
     } catch (error) {
         res.status(500).json({message: "Failed to get all notes", error: error.message});
     }
+    // have issue with older express
     res.send("You just fetched the note");
 }
 
@@ -19,6 +20,7 @@ export const getNoteById = async (req, res) => {
         if (!note) {
             return res.status(404).json({message: "Note not found"});
         }
+        // have issue with older express
         res.status(200).json({ message: "Note found" , note: note});
     } catch (error) {
         res.status(500).json({message: "Failed to get the note", error: error.message});
