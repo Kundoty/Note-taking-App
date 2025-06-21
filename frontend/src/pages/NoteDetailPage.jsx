@@ -95,7 +95,7 @@ const NoteDetailPage = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder={note.title || 'title'}
+                                    placeholder={note.title}
                                     className='input input-bordered'
                                     value={note.title}
                                     onChange={(e) => setNote({ ...note, title: e.target.value })}
@@ -108,7 +108,7 @@ const NoteDetailPage = () => {
                                 <textarea 
                                     placeholder=''
                                     className='textarea textarea-bordered h-32'
-                                    value={note.description || '内容'}
+                                    value={note.description}
                                     onChange={(e) => setNote({ ...note, description: e.target.value })}
                                 />
 
