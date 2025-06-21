@@ -15,6 +15,7 @@ export const getNoteById = async (req, res) => {
     try {
         const id = req.params.id;
         const note = await Note.findById(id);
+        res.json(note); // this was a problem when I try to find a note by id
         if (!note) {
             return res.status(404).json({message: "Note not found"});
         }
